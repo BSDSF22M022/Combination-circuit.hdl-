@@ -1,0 +1,13 @@
+CHIP Majority {
+	IN w,x,y,z ;
+	OUT out;
+	PARTS:
+	And(a=x,b=z,out=xAndz);
+	And(a=x,b=y,out=xAndy);
+	And(a=y,b=z,out=yAndz);
+	Or(a=xAndz,b=xAndy,out=w1);
+	Or(a=w1,b=yAndz,out=w2);
+	And(a=w,b=w2,out=t1);
+	And(a=z,b=xAndy,out=t2);
+	Or(a=t1,b=t2,out=out);
+}

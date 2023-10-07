@@ -1,0 +1,19 @@
+CHIP Excess-3 {
+	IN w,x,y,z ;
+	OUT p,q,r,s;
+	PARTS:
+	Or(a=y,b=z,out=ot);
+	And(a=ot,b=x,out=t1);
+	Or(a=t1,b=w,out=p);
+	
+	Not(in=x , out=notx);
+	And(a=notx,b=ot ,out=t2);
+	And(a=x,b=notot ,out=t3);
+	Or(a=t3 ,b=t2 ,out=q);
+	
+	Not(in=ot , out=notot);
+	And(a=y,b=z,out=yAndz);
+	Or(a=notot,b=yAndz,out=r);
+	
+	Not(in=z , out=s);
+}

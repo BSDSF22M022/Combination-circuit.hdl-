@@ -1,0 +1,13 @@
+CHIP Unsigned {
+	IN w,x,y,z ;
+	OUT out;
+	PARTS:
+	Not(in=y,out=noty);
+	Not(in=z,out=notz);
+	And(a=x,b=notz,out=xAndnotz);
+	Or(a=xAndnotz,b=noty,out=t1);
+	And(a=w,b=t1,out=w1);
+	And(a=noty,b=notz,out=notyAndnotz);
+	And(a=notyAndnotz,b=x,out=w2);
+	Or(a=w1,b=w2,out=out);
+}
